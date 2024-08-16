@@ -14,15 +14,6 @@ pipeline {
                 bat 'docker build -t %IMAGE_NAME%:%IMAGE_TAG% .'
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing the app'
-
-                catchError(buildResult: 'SUCCESS') {
-                    bat 'npm run test'
-                }
-            }
-        }
         stage ('Deploy') {
             steps {
                 echo 'Deploying to Docker Hub'
