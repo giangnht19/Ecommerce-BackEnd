@@ -22,7 +22,7 @@ pipeline {
                     bat 'docker login -u giangnht19 -p %dockerhubpwd%'
                     bat 'docker stop backend'
                     bat 'docker rm backend'
-                    bat 'docker run -d --name backend %IMAGE_NAME%:%IMAGE_TAG%'
+                    bat 'docker run -d --name backend -p 4000:4000 %IMAGE_NAME%:%IMAGE_TAG%'
                 }
             }
         }
