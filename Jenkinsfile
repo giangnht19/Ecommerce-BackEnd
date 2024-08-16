@@ -20,9 +20,6 @@ pipeline {
 
                 withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
                     bat 'docker login -u giangnht19 -p %dockerhubpwd%'
-                    bat 'docker stop backend || true'
-                    bat 'docker rm backend || true'
-                    bat 'docker push %IMAGE_NAME%:%IMAGE_TAG%'
                     bat 'docker run -d --name backend %IMAGE_NAME%:%IMAGE_TAG%'
                 }
             }
