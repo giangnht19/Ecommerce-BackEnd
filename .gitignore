@@ -3,9 +3,6 @@
 # Node modules
 node_modules/
 
-# Environment variables
-.env
-
 # Logs
 logs/
 *.log
@@ -28,6 +25,3 @@ jspm_packages/
 
 # Yarn Integrity file
 .yarn-integrity
-
-# dotenv environment variables file
-.env
