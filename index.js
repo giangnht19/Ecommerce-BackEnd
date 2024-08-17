@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors());
 
 // Database connection with MongoDB
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect('mongodb+srv://giangnguyenhtwork:giangnht19@cluster0.yb14si8.mongodb.net/fashfrenzy')
 
 // API Creation
 app.get("/", (req, res) => {
