@@ -1,4 +1,4 @@
-const port = 4000;
+const port = process.env.PORT || 4000;
 const express = require("express");
 const cors = require("cors");
 const app = express();
@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors());
 
 // Database connection with MongoDB
-mongoose.connect('mongodb+srv://giangnguyenhtwork:giangnht19@cluster0.yb14si8.mongodb.net/fashfrenzy')
+mongoose.connect(process.env.MONGODB_URI)
 
 // API Creation
 app.get("/", (req, res) => {
