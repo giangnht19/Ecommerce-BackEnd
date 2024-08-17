@@ -1,4 +1,4 @@
-const port = 4000;
+const port = process.env.PORT || 4000;
 const express = require("express");
 const cors = require("cors");
 const app = express();
@@ -7,12 +7,13 @@ const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const path = require("path");
 const { log } = require("console");
+require("dotenv").config();
 
 app.use(express.json());
 app.use(cors());
 
 // Database connection with MongoDB
-mongoose.connect("mongodb+srv://giangnguyenhtwork:giangnht19@cluster0.yb14si8.mongodb.net/fashfrenzy")
+mongoose.connect(process.env.MONGODB_URI)
 
 // API Creation
 app.get("/", (req, res) => {
@@ -47,7 +48,7 @@ const upload = multer({ storage: storage });
 app.post("/upload", upload.single("product"), (req, res) => {
     res.json({
         success: 1,
-        image_url: `https://ecommerce-backend-l8jr.onrender.com/images/${req.file.filename}`
+        image_url: `http://localhost:${port}/images/${req.file.filename}`
     })
 })
 
