@@ -30,7 +30,7 @@ pipeline {
     post {
         always {
             echo 'Cleaning up'
-            bat 'docker image prune -a -f'
+            bat 'docker system prune -a -f'
             bat 'docker logout'
             echo 'Build completed'
         }
