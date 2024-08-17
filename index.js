@@ -37,15 +37,16 @@ const storage = multer.diskStorage({
     }
 })
 
+
+app.use("/images", express.static(path.join(__dirname, 'upload/images')));
 const upload = multer({ storage: storage });
 
 // Creating Upload Endpoints
-app.use("/images", express.static("upload/images"));
 
 app.post("/upload", upload.single("product"), (req, res) => {
     res.json({
         success: 1,
-        image_url: `https://ecommerce-backend-l8jr.onrender.com/images/${req.file.filename}`
+        image_url: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
     })
 })
 
