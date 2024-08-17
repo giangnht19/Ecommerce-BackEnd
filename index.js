@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors());
 
 // Database connection with MongoDB
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGO_URI)
 
 // API Creation
 app.get("/", (req, res) => {
@@ -38,12 +38,10 @@ const storage = multer.diskStorage({
     }
 })
 
-
-app.use("/images", express.static("upload/images"));
-
 const upload = multer({ storage: storage });
 
 // Creating Upload Endpoints
+app.use("/images", express.static("upload/images"));
 
 app.post("/upload", upload.single("product"), (req, res) => {
     res.json({
